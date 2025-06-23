@@ -1,11 +1,14 @@
 #from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.shortcuts import render
 from .models import Item
 from rest_framework import serializers
 from rest_framework import status
 from .serializers import ItemSerializer
 #from rest_framework.views import Response
+
+
 
 
 @api_view(['GET'])
@@ -50,8 +53,16 @@ def add_items(request):
         return Response(item.data)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    
+
+def webpage1(request):
+    return render(request, 'webpage1.html')  # adjust path if needed
 
 
 # WORKS
 # r = req.post('http://localhost:8000/api/create/', json=S)
+
+
+# FOR LINUX: (before u run psycopg2)
+# sudo apt update
+# sudo apt install libpq-dev python3-dev
+# pip install psycopg2
